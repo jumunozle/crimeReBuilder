@@ -1,0 +1,9 @@
+# Python version
+# Python==3.12
+
+# Librerías principales
+matplotlib==3.8.4
+numpy==1.26.4
+open3d==0.18.0
+torch==2.3.0
+transformers==4.41.2
