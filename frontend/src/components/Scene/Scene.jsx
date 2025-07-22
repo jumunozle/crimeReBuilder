@@ -11,23 +11,10 @@ function Model({ version }) {
   const ref = useRef()
 
   useEffect(() => {
-    // Centrar el objeto
     const box = new THREE.Box3().setFromObject(obj)
     const center = new THREE.Vector3()
     box.getCenter(center)
     obj.position.sub(center)
-
-    // Aplicar material mejorado
-    obj.traverse((child) => {
-      if (child.isMesh) {
-        child.material = new THREE.MeshLambertMaterial({
-          color: 0xffffff,
-          wireframe: false,
-        })
-        child.castShadow = true
-        child.receiveShadow = true
-      }
-    })
   }, [obj])
 
   return (
@@ -39,6 +26,7 @@ function Model({ version }) {
     />
   )
 }
+
 
 function SceneControls() {
   const [wireframe, setWireframe] = useState(false)
@@ -98,12 +86,11 @@ export default function Scene({ version }) {
         />
         
         {/* Modelo 3D con loading */}
-        <Suspense fallback={<LoadingSpinner />}>
+         {/* Suspense fallback={<LoadingSpinner />}>*/}
           <Model version={version} key={version} />
-        </Suspense>
+        {/* </Suspense>*/}
         
-        {/* Grid de referencia */}
-        <gridHelper args={[20, 20, 0x444444, 0x444444]} position={[0, -1, 0]} />
+
       </Canvas>
       
       <SceneControls />
