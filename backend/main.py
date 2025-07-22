@@ -18,12 +18,12 @@ app.add_middleware(
 
 @app.post("/upload/")
 async def upload_image(file: UploadFile = File(...)):
+    os.makedirs("./images", exist_ok=True)  # Asegura que la carpeta exista
     file_location = f"./images/{file.filename}"
     with open(file_location, "wb") as f:
         shutil.copyfileobj(file.file, f)
 
     obj_path = reconstruct_obj(file_location)
-
     return {"message": "Reconstrucción completada", "obj_path": obj_path}
 
 
