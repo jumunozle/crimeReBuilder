@@ -2,7 +2,9 @@
 
 Ir a la carpeta backend, y ejecutar uvicorn main:app --reload --port 8000
 
-Ir a la carpeta del front, y ejecutar npm run dev
+En la carpeta frontend instalar npm con npm install e instalar tambien npm install three @react-three/fiber @react-three/drei
+
+Ejecutar el front con npm run dev
 
 Deben instalar pytorch desde la pagina oficial
 
